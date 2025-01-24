@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sristi 2025 Tech Fest Registration</title>
+    <style>
+        /* Font face for custom font */
+        @font-face {
+            font-family: 'Blackpearl';
+            src: url('Blackpearl-vPxA.ttf') format('truetype');
+        }
+
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* Container for the registration form */
+        .registration-form-container {
+            background: #000;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        /* Form styling */
+        .registration-form {
+            width: 100%;
+        }
+
+        .registration-form h1 {
+            text-align: center;
+            color: red;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            font-family: 'Blackpearl', Arial, sans-serif;
+        }
+
+        .registration-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: red;
+        }
+
+        .registration-form input[type="text"],
+        .registration-form input[type="email"],
+        .registration-form input[type="tel"],
+        .registration-form select,
+        .registration-form textarea,
+        .registration-form input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .registration-form textarea {
+            resize: none;
+        }
+
+        .registration-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .registration-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .registration-form .note {
+            font-size: 12px;
+            color: red;
+            text-align: center;
+        }
+
+        /* Pay Now button styling */
+        .pay-now-btn {
+            display: block;
+            margin: 10px auto 20px;
+            text-align: center;
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .pay-now-btn:hover {
+            background-color: #218838;
+        }
+
+        /* Footer text styling */
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: red;
+        }
+
+        .footer img {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-left: 5px;
+        }
+
+        /* Responsive design for smaller devices */
+        @media (max-width: 480px) {
+            .registration-form-container {
+                padding: 15px;
+            }
+
+            .registration-form h1 {
+                font-size: 24px;
+            }
+
+            .registration-form button {
+                font-size: 14px;
+            }
+        }
+
+        /* Disable horizontal scroll */
+        html, body {
+            overflow-x: hidden;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const eventSelect = document.getElementById('event');
+            const note = document.querySelector('.note');
+            const payNowContainer = document.getElementById('pay-now-container');
+
+            eventSelect.addEventListener('change', function () {
+                if (eventSelect.value === 'both') {
+                    note.textContent = 'Participation Fee: ₹800';
+                    payNowContainer.innerHTML = '<a href="upi://pay?pa=sristijgec@sbi&pn=SRISTIJALPAIGURI%20GOVT%20ENGG%20COLLEGE&mc=8220&tr=&tn=&am=800&cu=INR&url=&mode=02&purpose=00&orgid=180102&sign=MEQCIBpUcu1IGX07X7+IPlV6AYfA43SSwUaV/VV+19w2cIRNAiA0qD2s6BqIza4HZhd9M2SPsSdCp8ShUlbDql6V7SviQQ==" class="pay-now-btn">PAY NOW</a>';
+                } else if (eventSelect.value === 'event1' || eventSelect.value === 'event2') {
+                    note.textContent = 'Participation Fee: ₹500';
+                    payNowContainer.innerHTML = '<a href="upi://pay?pa=sristijgec@sbi&pn=SRISTIJALPAIGURI%20GOVT%20ENGG%20COLLEGE&mc=8220&tr=&tn=&am=500&cu=INR&url=&mode=02&purpose=00&orgid=180102&sign=MEQCIBpUcu1IGX07X7+IPlV6AYfA43SSwUaV/VV+19w2cIRNAiA0qD2s6BqIza4HZhd9M2SPsSdCp8ShUlbDql6V7SviQQ==" class="pay-now-btn">PAY NOW</a>';
+                } else {
+                    note.textContent = 'Participation Fee: Event 1 or 2 - ₹500, Both (1+2) - ₹800';
+                    payNowContainer.innerHTML = '';
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="registration-form-container">
+        <form class="registration-form">
+            <h1>Sristi 2025 Registration</h1>
+
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+            <label for="roll">Roll Number</label>
+            <input type="text" id="roll" name="roll" placeholder="Enter your roll number" required>
+
+            <label for="dept">Department</label>
+            <select id="dept" name="dept" required>
+                <option value="">-- Select your department --</option>
+                <option value="civil">Civil Engineering</option>
+                <option value="mechanical">Mechanical Engineering</option>
+                <option value="electrical">Electrical Engineering</option>
+                <option value="ece">Electronics and Communication</option>
+                <option value="cse">Computer Science</option>
+                <option value="it">Information Technology</option>
+            </select>
+
+            <label for="year">Year</label>
+            <select id="year" name="year" required>
+                <option value="">-- Choose your year --</option>
+                <option value="1st">1st Year</option>
+                <option value="2nd">2nd Year</option>
+                <option value="3rd">3rd Year</option>
+                <option value="4th">4th Year</option>
+            </select>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="event">Select Event</label>
+            <select id="event" name="event" required>
+                <option value="">-- Choose an event --</option>
+                <option value="event1">Event 1</option>
+                <option value="event2">Event 2</option>
+                <option value="both">Both (1+2)</option>
+            </select>
+
+            <p class="note">Participation Fee: Event 1 or 2 - ₹500, Both (1+2) - ₹800</p>
+
+            <div id="pay-now-container"></div>
+
+            <label for="payment">Upload Payment Screenshot</label>
+            <input type="file" id="payment" name="payment" accept="image/*" required>
+
+            <button type="submit">Register</button>
+
+            <div class="footer">with ❤️ from Sampurno <img src="WhatsApp Image 2025-01-24 at 21.35.54_92204159.jpg" alt="Sampurno" /></div>
+        </form>
+    </div>
+</body>
+</html>
