@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -232,36 +233,6 @@
 
             <div class="footer">with ❤️ from Sampurno <img src="WhatsApp Image 2025-01-24 at 21.35.54_92204159.jpg" alt="Sampurno" /></div>
         </form>
-
-        <script>
-            document.querySelector('.registration-form').addEventListener('submit', async function (event) {
-                event.preventDefault(); // Prevent default form submission
-        
-                // Collect form data
-                const formData = new FormData(this);
-        
-                // Send data to Apps Script
-                const scriptURL = "https://script.google.com/macros/s/AKfycbwe9RckFvmMXiv80Pvl487EhVvqc_oVbRZWMMxkygMxFlGF1hKLJ9ZJ9ZXoTvk78TtmZg/exec";
-        
-                try {
-                    const response = await fetch(scriptURL, {
-                        method: "POST",
-                        body: formData
-                    });
-        
-                    const result = await response.json();
-                    if (result.success) {
-                        alert("Registration successful!");
-                    } else {
-                        alert("Error: " + result.message);
-                    }
-                } catch (error) {
-                    alert("Error: Unable to submit the form. Please try again.");
-                }
-            });
-        </script>
-          
-
     </div>
 </body>
 </html>
