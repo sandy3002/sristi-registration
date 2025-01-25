@@ -235,34 +235,30 @@
         </form>
     </div>
     <script>
-        
-        document.querySelector('.registration-form').addEventListener('submit', async function (e) {
-    e.preventDefault(); // Prevent form refresh
+document.querySelector('.registration-form').addEventListener('submit', async function (e) {
+  e.preventDefault(); // Prevent form refresh
 
-    const form = e.target;
-    const formData = new FormData(form);
+  const form = e.target;
+  const formData = new FormData(form);
 
-    try {
-        const response = await fetch('https://script.google.com/macros/s/AKfycbybtCyc_2NgA3ec_FY0ivcVJQWBFmczV53ApN9PE0Cpv9G3jKWKCTXsbSMwpT4PCuKB6g/exec', {
-            method: 'POST',
-            body: formData
-        });
+  try {
+    const response = await fetch('https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec', {
+      method: 'POST',
+      body: formData, // Send FormData directly
+    });
 
-        const result = await response.json();
-        if (result.success) {
-            alert("Registration successful!");
-        } else {
-            alert("Error: " + result.message);
-        }
-    } catch (error) {
-        console.error("Error:", error);
-        alert("An error occurred during submission.");
+    const result = await response.json();
+    if (result.success) {
+      alert("Registration successful! File URL: " + result.imageUrl);
+      form.reset(); // Clear the form after successful submission
+    } else {
+      alert("Error: " + result.message);
     }
+  } catch (error) {
+    console.error("Error:", error);
+    alert("An error occurred during submission.");
+  }
 });
-if (result.success) {
-    form.reset(); // Clear the form
-    alert("Registration successful!");
-}
       </script>
       
 </body>
