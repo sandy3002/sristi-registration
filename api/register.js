@@ -1,5 +1,5 @@
 import dbConnect from '../../dbconnection'; // Adjust path if needed
-import Registration from '../../models/Registration';
+
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -7,9 +7,9 @@ export default async function handler(req, res) {
   }
 
   try {
-    console.log("Connecting to MongoDB...");
-    await dbConnect();
-    console.log("MongoDB connected.");
+    // console.log("Connecting to MongoDB...");
+    // await dbConnect();
+    // console.log("MongoDB connected.");
 
     const { name, roll, dept, year, phone, email, event, payment } = req.body;
     console.log("Request body:", req.body);
