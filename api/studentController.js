@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const student = require('./students.models.js');
+const student = require("./students.models.js");
 
 // Controller for registering a student
 const registerStudent = async (req, res) => {
