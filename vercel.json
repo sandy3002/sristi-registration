@@ -6,7 +6,7 @@
         "use": "@vercel/static"
       },
       {
-        "src": "api/register.js",
+        "src": "api/dbconnection.js",
         "use": "@vercel/node"
       }
     ]
