@@ -8,7 +8,7 @@ const port = 4000; // Backend port
 
 // CORS configuration
 const corsOptions = {
-  origin: 'http://127.0.0.1:5500', // Frontend's origin
+  origin: 'https://sristi-registration-frontend.vercel.app', // Frontend's origin
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Necessary headers
   credentials: true, // For cookies or authentication if needed
