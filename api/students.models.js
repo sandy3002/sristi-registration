@@ -9,14 +9,14 @@ const studentSchema= new mongoose.Schema({
         type: Number,
         required: true,
     },
-    department:{
+    dept:{
         type: String,
-        enum: ["Civil Engineering", "Mechanical Engineering", "Electrical Engineering", "Electronics and Communication","Computer Science","Information Technology"],
+        enum: ["civil", "mechanical", "electrical", "ece","cse","it"],
         required:true,
     },
     year:{
-        type: Number,
-        enum:["1st Year","2nd Year","3rd Year","4th Year"],
+        type: String,
+        enum:["1st","2nd","3rd","4th"],
          required: true,
     },
     phone:{
@@ -29,7 +29,7 @@ const studentSchema= new mongoose.Schema({
     },
     event:{
         type: String,
-        enum:['Event 1','Event 2','Both(1+2)'],
+        enum:['event1','event2','both'],
         required: true,
     },
     payment:{//image
