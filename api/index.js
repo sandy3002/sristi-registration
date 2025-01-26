@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const dbConnect = require("./api/dbconnection.js");
-const studentRouter = require("./api/studentController.js"); // Adjust the path if necessary
+const dbConnect = require("./dbconnection.js");
+const studentRouter = require("./studentController.js"); // Adjust the path if necessary
 
 const app = express();
 const port = 4000; // Backend port
