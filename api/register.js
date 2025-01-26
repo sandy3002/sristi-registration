@@ -1,36 +1,18 @@
-import dbConnect from '../dbconnection'; // Import your db connection
-import mongoose from 'mongoose';
+const express = require('express');
+const dbConnect = require('./dbconnection'); // Import DB connection
+const studentRoutes = require('./student.controller'); // Import student-related routes
 
-export default async function handler(req, res) {
-  if (req.method === 'POST') {
-    // Ensure MongoDB connection is established
-    await dbConnect();
+dbConnect(); // Initialize MongoDB connection
 
-    try {
-      // Handle form data processing here
-      const { name, roll, dept, year, phone, email, event, payment } = req.body;
+const app = express();
+app.use(express.json()); // Parse JSON requests
 
-      // Create a new document in your MongoDB database here
-      // Assuming you have a model named Registration
-      const newRegistration = new Registration({
-        name,
-        roll,
-        dept,
-        year,
-        phone,
-        email,
-        event,
-        payment
-      });
+// Mount student routes
+app.use('/api/register', studentRoutes);
 
-      await newRegistration.save();
+// Default error handler for unknown routes
+app.use((req, res) => {
+  res.status(404).json({ message: 'API route not found' });
+});
 
-      res.status(200).json({ message: 'Registration successful!' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Server error', error });
-    }
-  } else {
-    res.status(405).json({ message: 'Method not allowed' });
-  }
-}
+module.exports = app;
