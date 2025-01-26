@@ -1,25 +1,33 @@
 const express = require("express");
-const { MongoClient } = require("mongodb");
-const app = express()
 const cors = require("cors");
+const dbConnect = require("./api/dbconnection.js");
+const studentRouter = require("./api/studentController.js"); // Adjust the path if necessary
 
+const app = express();
+const port = 4000; // Backend port
+
+// CORS configuration
 const corsOptions = {
-  origin: 'http://127.0.0.1:5500', // Allow only your frontend server
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Add any methods you're using
-  allowedHeaders: ['Content-Type', 'Authorization'], // Add necessary headers
+  origin: 'http://127.0.0.1:5500', // Frontend's origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Necessary headers
+  credentials: true, // For cookies or authentication if needed
 };
 
+// Apply CORS middleware
+app.use(cors(corsOptions)); // Automatically handles preflight and actual requests
+app.options('*', cors(corsOptions)); // For explicit preflight requests
 
-const dbConnect = require("./api/dbconnection.js");
-app.options('*', cors(corsOptions));
-const port =  4000;
-console.log(port);
-
-dbConnect();
-const studentRouter=require('./api/studentController.js')
+// Middleware for parsing JSON requests
 app.use(express.json());
-app.use('/',studentRouter);
 
+// Connect to the database
+dbConnect();
+
+// Route setup for student-related endpoints
+app.use('/', studentRouter);
+
+// Start the server
 app.listen(port, () => {
-  console.log(`server is running at port ${port}`);
+  console.log(`Server is running at http://localhost:${port}`);
 });
