@@ -313,12 +313,16 @@
           };
     
           try {
+<<<<<<< HEAD
             // Upload the payment screenshot to Cloudinary
             const uploadData = await uploadToCloudinary(paymentInput);
             formData.payment = uploadData.secure_url;
     
             // Send the data to your API endpoint for registration
             const response = await fetch("/api/dbconnection", {
+=======
+            const response = await fetch("/api/dbconnection.js", {
+>>>>>>> 6ff96132dbadfe267274c89b18f2d70c42cdf080
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(formData),
