@@ -20,6 +20,7 @@ const registerStudent = async (req, res) => {
             payment: req.body.payment,
             amount: req.body.amount,
             college: req.body.college,
+            collegeName: req.body.collegeName,
             isVerified:req.body.isVerified,
         });
 

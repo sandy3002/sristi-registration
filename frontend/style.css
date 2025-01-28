@@ -84,7 +84,7 @@ select {
   display: flex;
   justify-content: center; /* Horizontally center */
   align-items: center; /* Vertically center */
-  height:1100px;
+  height:1200px;
   width: 600px;
   border: 2px solid #ccc;
   border-radius: 6px;
