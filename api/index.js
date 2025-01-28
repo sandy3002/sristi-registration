@@ -12,6 +12,7 @@ const corsOptions = {
     console.log("Request Origin:", origin);
     const allowedOrigins = [
       'https://sristi-registration-frontend.vercel.app', // Frontend's origin
+      'https://sristi-registration-frontend.vercel.app/', // Frontend's origin
       'http://127.0.0.1:5500', // For local testing
       'http://127.0.0.1:5500/frontend/index.html',
       'http://localhost:4000/'
