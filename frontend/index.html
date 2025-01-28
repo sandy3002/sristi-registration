@@ -160,141 +160,157 @@
         overflow-x: hidden;
       }
     </style> -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const eventSelect = document.getElementById("event");
-        const note = document.querySelector(".note");
-        const payNowContainer = document.getElementById("pay-now-container");
-        const collegeSelect = document.getElementById("college");
-        const collegeInputContainer = document.getElementById("college-input-container");
-        const eventContainer = document.getElementById("event-container");
-    
-    
-        collegeSelect.addEventListener("change", function () {
-          if (collegeSelect.value === "other") {
-            collegeInputContainer.style.display = "block";
-            note.textContent = "Participation Fee: ₹800";
-            payNowContainer.innerHTML =
-              '<a href="upi://pay?pa=sristijgec@sbi&pn=SRISTIJALPAIGURI%20GOVT%20ENGG%20COLLEGE&mc=8220&tr=&tn=&am=800&cu=INR&url=&mode=02&purpose=00&orgid=180102&sign=MEQCIBpUcu1IGX07X7+IPlV6AYfA43SSwUaV/VV+19w2cIRNAiA0qD2s6BqIza4HZhd9M2SPsSdCp8ShUlbDql6V7SviQQ==" class="pay-now-btn">PAY NOW</a>';
-          } else {
-            eventSelect.style.display = "block";
-            eventSelect.addEventListener("change", function () {
-          if (eventSelect.value === "both") {
-            note.textContent = "Participation Fee: ₹800";
-            payNowContainer.innerHTML =
-              '<a href="upi://pay?pa=sristijgec@sbi&pn=SRISTIJALPAIGURI%20GOVT%20ENGG%20COLLEGE&mc=8220&tr=&tn=&am=800&cu=INR&url=&mode=02&purpose=00&orgid=180102&sign=MEQCIBpUcu1IGX07X7+IPlV6AYfA43SSwUaV/VV+19w2cIRNAiA0qD2s6BqIza4HZhd9M2SPsSdCp8ShUlbDql6V7SviQQ==" class="pay-now-btn">PAY NOW</a>';
-          } else if (eventSelect.value === "event1" || eventSelect.value === "event2") {
-            note.textContent = "Participation Fee: ₹500";
-            payNowContainer.innerHTML =
-              '<a href="upi://pay?pa=sristijgec@sbi&pn=SRISTIJALPAIGURI%20GOVT%20ENGG%20COLLEGE&mc=8220&tr=&tn=&am=500&cu=INR&url=&mode=02&purpose=00&orgid=180102&sign=MEQCIBpUcu1IGX07X7+IPlV6AYfA43SSwUaV/VV+19w2cIRNAiA0qD2s6BqIza4HZhd9M2SPsSdCp8ShUlbDql6V7SviQQ==" class="pay-now-btn">PAY NOW</a>';
-          } else {
-            note.textContent = "Participation Fee: Event 1 or 2 - ₹500, Both (1+2) - ₹800";
-            payNowContainer.innerHTML = "";
-          }
-        }); 
-          }
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sristi 2025 Registration</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const eventSelect = document.getElementById("event");
+      const eventContainer = document.getElementById("event-container");
+      const note = document.querySelector(".note");
+      const payNowContainer = document.getElementById("pay-now-container");
+      const collegeSelect = document.getElementById("college");
+      const collegeInputContainer = document.getElementById("college-input-container");
 
+      collegeSelect.addEventListener("change", function () {
+        if (collegeSelect.value === "other") {
+          // Show input for entering the college name
+          collegeInputContainer.style.display = "block";
+          // Hide event selection dropdown
+          eventContainer.style.display = "none";
+          // Update the note and pay now button for fixed ₹800 fee
+          note.textContent = "Participation Fee: ₹800";
+          payNowContainer.innerHTML =
+            '<a href="upi://pay?pa=sristijgec@sbi&pn=SRISTIJALPAIGURI%20GOVT%20ENGG%20COLLEGE&mc=8220&tr=&tn=&am=800&cu=INR&url=&mode=02&purpose=00&orgid=180102&sign=MEQCIBpUcu1IGX07X7+IPlV6AYfA43SSwUaV/VV+19w2cIRNAiA0qD2s6BqIza4HZhd9M2SPsSdCp8ShUlbDql6V7SviQQ==" class="pay-now-btn">PAY NOW</a>';
+        } else {
+          // Hide input for entering the college name
+          collegeInputContainer.style.display = "none";
+          // Show event selection dropdown
+          eventContainer.style.display = "block";
+          // Reset the note and pay now button based on event selection
+          note.textContent = "Participation Fee: Event 1 or 2 - ₹500, Both (1+2) - ₹800";
+          payNowContainer.innerHTML = "";
 
-        });
+          eventSelect.addEventListener("change", function () {
+            if (eventSelect.value === "both") {
+              note.textContent = "Participation Fee: ₹800";
+              payNowContainer.innerHTML =
+                '<a href="upi://pay?pa=sristijgec@sbi&pn=SRISTIJALPAIGURI%20GOVT%20ENGG%20COLLEGE&mc=8220&tr=&tn=&am=800&cu=INR&url=&mode=02&purpose=00&orgid=180102&sign=MEQCIBpUcu1IGX07X7+IPlV6AYfA43SSwUaV/VV+19w2cIRNAiA0qD2s6BqIza4HZhd9M2SPsSdCp8ShUlbDql6V7SviQQ==" class="pay-now-btn">PAY NOW</a>';
+            } else if (eventSelect.value === "event1" || eventSelect.value === "event2") {
+              note.textContent = "Participation Fee: ₹500";
+              payNowContainer.innerHTML =
+                '<a href="upi://pay?pa=sristijgec@sbi&pn=SRISTIJALPAIGURI%20GOVT%20ENGG%20COLLEGE&mc=8220&tr=&tn=&am=500&cu=INR&url=&mode=02&purpose=00&orgid=180102&sign=MEQCIBpUcu1IGX07X7+IPlV6AYfA43SSwUaV/VV+19w2cIRNAiA0qD2s6BqIza4HZhd9M2SPsSdCp8ShUlbDql6V7SviQQ==" class="pay-now-btn">PAY NOW</a>';
+            } else {
+              note.textContent = "Participation Fee: Event 1 or 2 - ₹500, Both (1+2) - ₹800";
+              payNowContainer.innerHTML = "";
+            }
+          });
+        }
       });
-    </script>
-    </head>
-    <body>
-      <div class="container">
-        <div class="registration-form-container">
-          <form class="registration-form" id="registrationForm">
-            <h1 class="title">Sristi 2025 Registration</h1>
-    
-            <div class="label-item">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="Enter your full name" required />
-            </div>
-    
-            <div class="label-item">
-              <label for="college">College Name</label>
-              <select id="college" name="college" required>
-                <option value="">-- Select your college --</option>
-                <option value="jgec">Jalpaiguri Government Engineering College</option>
-                <option value="other">Others</option>
-              </select>
-            </div>
-    
-            <div id="college-input-container" class="label-item" style="display: none;">
-              <label for="otherCollege">Enter College Name</label>
-              <input type="text" id="otherCollege" name="otherCollege" placeholder="Enter your college name" />
-            </div>
-    
-            <div class="label-item">
-              <label for="roll">Roll Number</label>
-              <input type="text" id="roll" name="roll" placeholder="Enter your roll number" required />
-            </div>
-    
-            <div class="label-item">
-              <label for="dept">Department</label>
-              <select id="dept" name="dept" required>
-                <option value="">-- Select your department --</option>
-                <option value="civil">Civil Engineering</option>
-                <option value="mechanical">Mechanical Engineering</option>
-                <option value="electrical">Electrical Engineering</option>
-                <option value="ece">Electronics and Communication</option>
-                <option value="cse">Computer Science</option>
-                <option value="it">Information Technology</option>
-                <option value="other">Others</option>
-              </select>
-            </div>
-    
-            <div class="label-item">
-              <label for="year">Year</label>
-              <select id="year" name="year" required>
-                <option value="">-- Choose your year --</option>
-                <option value="1st">1st Year</option>
-                <option value="2nd">2nd Year</option>
-                <option value="3rd">3rd Year</option>
-                <option value="4th">4th Year</option>
-              </select>
-            </div>
-    
-            <div class="label-item">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required />
-            </div>
-    
-            <div class="label-item">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="Enter your email" required />
-            </div>
-    
-            <div class="label-item" id="event" style="display: none;">
-              <label for="event">Select Event</label>
-              <select id="event" name="event" required>
-                <option value="">-- Choose an event --</option>
-                <option value="event1">Event 1</option>
-                <option value="event2">Event 2</option>
-                <option value="both">Both (1+2)</option>
-              </select>
-            </div>
-    
-            <p class="note">Participation Fee: Event 1 or 2 - ₹500, Both (1+2) - ₹800</p>
-    
-            <div id="pay-now-container"></div>
-    
-            <div class="label-item" >
-              <label for="payment">Upload Payment Screenshot</label>
-              <input
-                type="file"
-                id="payment"
-                name="payment"
-                accept="image/*"
-                required
-                onchange="displayFileName()"
-              />
-              <p id="fileName"></p>
-            </div>
-    
-            <button class="register-btn" type="submit">Register</button>
-          </form>
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="registration-form-container">
+      <form class="registration-form" id="registrationForm">
+        <h1 class="title">Sristi 2025 Registration</h1>
+
+        <div class="label-item">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your full name" required />
         </div>
-      </div>
+
+        <div class="label-item">
+          <label for="college">College Name</label>
+          <select id="college" name="college" required>
+            <option value="">-- Select your college --</option>
+            <option value="jgec">Jalpaiguri Government Engineering College</option>
+            <option value="other">Others</option>
+          </select>
+        </div>
+
+        <div id="college-input-container" class="label-item" style="display: none;">
+          <label for="otherCollege">Enter College Name</label>
+          <input type="text" id="otherCollege" name="otherCollege" placeholder="Enter your college name" />
+        </div>
+
+        <div class="label-item">
+          <label for="roll">Roll Number</label>
+          <input type="text" id="roll" name="roll" placeholder="Enter your roll number" required />
+        </div>
+
+        <div class="label-item">
+          <label for="dept">Department</label>
+          <select id="dept" name="dept" required>
+            <option value="">-- Select your department --</option>
+            <option value="civil">Civil Engineering</option>
+            <option value="mechanical">Mechanical Engineering</option>
+            <option value="electrical">Electrical Engineering</option>
+            <option value="ece">Electronics and Communication</option>
+            <option value="cse">Computer Science</option>
+            <option value="it">Information Technology</option>
+          </select>
+        </div>
+
+        <div class="label-item">
+          <label for="year">Year</label>
+          <select id="year" name="year" required>
+            <option value="">-- Choose your year --</option>
+            <option value="1st">1st Year</option>
+            <option value="2nd">2nd Year</option>
+            <option value="3rd">3rd Year</option>
+            <option value="4th">4th Year</option>
+          </select>
+        </div>
+
+        <div class="label-item">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required />
+        </div>
+
+        <div class="label-item">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required />
+        </div>
+
+        <div id="event-container" class="label-item">
+          <label for="event">Select Event</label>
+          <select id="event" name="event" required>
+            <option value="">-- Choose an event --</option>
+            <option value="event1">Event 1</option>
+            <option value="event2">Event 2</option>
+            <option value="both">Both (1+2)</option>
+          </select>
+        </div>
+
+        <p class="note">Participation Fee: Event 1 or 2 - ₹500, Both (1+2) - ₹800</p>
+
+        <div id="pay-now-container"></div>
+
+        <div class="label-item">
+          <label for="payment">Upload Payment Screenshot</label>
+          <input
+            type="file"
+            id="payment"
+            name="payment"
+            accept="image/*"
+            required
+            onchange="displayFileName()"
+          />
+          <p id="fileName"></p>
+        </div>
+
+        <button class="register-btn" type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
+
     
     <script>
       function displayFileName() {
