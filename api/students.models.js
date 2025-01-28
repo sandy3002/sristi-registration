@@ -9,6 +9,10 @@ const studentSchema= new mongoose.Schema({
         type: Number,
         required: true,
     },
+    college:{
+        type: String,
+        required: true,
+    },
     dept:{
         type: String,
         enum: ["civil", "mechanical", "electrical", "ece","cse","it"],
@@ -18,6 +22,10 @@ const studentSchema= new mongoose.Schema({
         type: String,
         enum:["1st","2nd","3rd","4th"],
          required: true,
+    },
+    amount:{
+        type: Number,
+        required: true,
     },
     phone:{
         type: Number,
@@ -36,6 +44,11 @@ const studentSchema= new mongoose.Schema({
         type: String,
         required: true,
     },
+    isVerified:{
+        type: Boolean,
+        default:false,
+        required:true,
+    }
    },{timestamps: true})
 
 module.exports=mongoose.model("studentSchema", studentSchema);

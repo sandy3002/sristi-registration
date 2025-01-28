@@ -17,6 +17,9 @@ const registerStudent = async (req, res) => {
             email: req.body.email,
             event: req.body.event,
             payment: req.body.payment,
+            amount: req.body.amount,
+            college: req.body.college,
+            isVerified:req.body.isVerified,
         });
 
         // Save the data and send a success response
