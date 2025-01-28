@@ -1,22 +1,15 @@
 const express = require("express");
 const cors = require("cors");
 const dbConnect = require("./dbconnection.js");
-const studentRouter = require("./studentController.js");
+const studentRouter = require("./studentController.js"); // Adjust the path if necessary
 
 const app = express();
-const port = 4000;
+const port = 4000; // Backend port
 
-// Allowed origins for CORS
-const allowedOrigins = [
-  'https://sristi-registration-frontend.vercel.app',
-  'http://127.0.0.1:5500',
-  'http://localhost:3000',
-];
-
+// Dynamic CORS configuration
 const corsOptions = {
   origin: (origin, callback) => {
-
-    console.log(origin)
+    console.log("Request Origin:", origin);
     const allowedOrigins = [
       'https://sristi-registration-frontend.vercel.app', // Frontend's origin
       'http://127.0.0.1:5500', // For local testing
@@ -26,7 +19,6 @@ const corsOptions = {
     if (allowedOrigins.includes(origin) || !origin) {
       callback(null, true);
     } else {
-      console.error(`CORS error: Origin ${origin} not allowed`);
       callback(new Error('Not allowed by CORS'));
     }
   },
@@ -35,30 +27,24 @@ const corsOptions = {
   credentials: true,
 };
 
-// // Apply CORS middleware
+// Apply CORS middleware
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Explicitly handle preflight requests
 
-// Explicitly handle preflight requests
-app.options('*', cors(corsOptions));
-app.use(cors()); // This allows all origins (not recommended for production)
-
-
-// Middleware for parsing JSON
+// Middleware for parsing JSON requests
 app.use(express.json());
-
-
-
-// Debugging middleware
-app.use((req, res, next) => {
-  console.log(`Incoming Request: ${req.method} ${req.url}`);
-  console.log(`Headers:`, req.headers);
-  next();
-});
 
 // Connect to the database
 dbConnect();
 
-// Route setup
+// Log incoming requests for debugging
+app.use((req, res, next) => {
+  console.log(`Incoming Request: ${req.method} ${req.url}`);
+  console.log(`Request Origin: ${req.headers.origin}`);
+  next();
+});
+
+// Route setup for student-related endpoints
 app.use('/', studentRouter);
 
 // Start the server
