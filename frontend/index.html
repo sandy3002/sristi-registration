@@ -315,10 +315,10 @@
           // Upload the payment screenshot to Cloudinary (as shown earlier)
           const uploadData = await uploadToCloudinary(paymentInput);
           formData.payment = uploadData.secure_url;
-
+          console.log(formData)
           // Send the data to your API
           try {
-            const response = await fetch("https://sristi-registration-backend.vercel.app", {
+            const response = await fetch("http://localhost:4000", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               // mode: 'no-cors',
