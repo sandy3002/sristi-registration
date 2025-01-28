@@ -345,7 +345,9 @@
             isVerified: false,
           };
 
-          formData.amount = event === "both" ? 800 : 500;
+          formData.amount = document.getElementById('event').value === "both" || document.getElementById('college')!=="jgec"? 800 : 500;
+          formData.collegeName= document.getElementById('college').value==="jgec"?"Jalpaiguri Government Engineering College":document.getElementById('otherCollege').value;
+          console.log(formData.collegeName)
 
           // Upload the payment screenshot to Cloudinary (as shown earlier)
           const uploadData = await uploadToCloudinary(paymentInput);
