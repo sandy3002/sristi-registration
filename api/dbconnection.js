@@ -1,8 +1,10 @@
+require('dotenv').config();
 const mongoose = require("mongoose");
-require("dotenv").config(); 
+
+
 const dbConnect = async () => {
   try {
-    const connect = await mongoose.connect(process.env.MONGODB_URI);
+    const connect = await mongoose.connect(process.env.MONGODB_URL);
     console.log(
       `database connected: ${connect.connection.host}`
     );

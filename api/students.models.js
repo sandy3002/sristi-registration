@@ -9,6 +9,11 @@ const studentSchema= new mongoose.Schema({
         type: Number,
         required: true,
     },
+    college:{
+        type: String,
+        enum:["jgec","other"],
+        required: true,
+    },
     dept:{
         type: String,
         enum: ["civil", "mechanical", "electrical", "ece","cse","it"],
@@ -18,6 +23,10 @@ const studentSchema= new mongoose.Schema({
         type: String,
         enum:["1st","2nd","3rd","4th"],
          required: true,
+    },
+    amount:{
+        type: Number,
+        required: true,
     },
     phone:{
         type: Number,
@@ -30,12 +39,16 @@ const studentSchema= new mongoose.Schema({
     event:{
         type: String,
         enum:['event1','event2','both'],
-        required: true,
     },
     payment:{//image
         type: String,
         required: true,
     },
+    isVerified:{
+        type: Boolean,
+        default:false,
+        required:true,
+    }
    },{timestamps: true})
 
 module.exports=mongoose.model("studentSchema", studentSchema);

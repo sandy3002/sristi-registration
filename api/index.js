@@ -15,6 +15,14 @@ const allowedOrigins = [
 
 const corsOptions = {
   origin: (origin, callback) => {
+
+    console.log(origin)
+    const allowedOrigins = [
+      'https://sristi-registration-frontend.vercel.app', // Frontend's origin
+      'http://127.0.0.1:5500', // For local testing
+      'http://127.0.0.1:5500/frontend/index.html',
+      'http://localhost:4000/'
+    ];
     if (allowedOrigins.includes(origin) || !origin) {
       callback(null, true);
     } else {
@@ -27,14 +35,18 @@ const corsOptions = {
   credentials: true,
 };
 
-// Apply CORS middleware
+// // Apply CORS middleware
 app.use(cors(corsOptions));
 
 // Explicitly handle preflight requests
 app.options('*', cors(corsOptions));
+app.use(cors()); // This allows all origins (not recommended for production)
+
 
 // Middleware for parsing JSON
 app.use(express.json());
+
+
 
 // Debugging middleware
 app.use((req, res, next) => {
