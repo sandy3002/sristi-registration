@@ -9,9 +9,13 @@ const port = 4000; // Backend port
 // Dynamic CORS configuration
 const corsOptions = {
   origin: (origin, callback) => {
+
+    console.log(origin)
     const allowedOrigins = [
       'https://sristi-registration-frontend.vercel.app', // Frontend's origin
-      'http://localhost:3000', // For local testing
+      'http://127.0.0.1:5500', // For local testing
+      'http://127.0.0.1:5500/frontend/index.html',
+      'http://localhost:4000/'
     ];
     if (allowedOrigins.includes(origin) || !origin) {
       callback(null, true);
@@ -24,14 +28,17 @@ const corsOptions = {
   credentials: true, // For cookies or authentication
 };
 
-// Apply CORS middleware
+// // Apply CORS middleware
 app.use(cors(corsOptions));
 
 // Explicitly handle preflight requests
 app.options('*', cors(corsOptions));
+app.use(cors()); // This allows all origins (not recommended for production)
+
 
 // Middleware for parsing JSON requests
 app.use(express.json());
+
 
 // Connect to the database
 dbConnect();

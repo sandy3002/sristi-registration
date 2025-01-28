@@ -5,6 +5,7 @@ const student = require("./students.models.js");
 // Controller for registering a student
 const registerStudent = async (req, res) => {
     try {
+        //console.log("request is:", req);
         console.log('Incoming payload:', req.body); // Log the request payload
 
         // Create a new student record

@@ -206,13 +206,11 @@
 
           <div class="label-item">
             <label for="college">College Name</label>
-            <input
-              type="text"
-              id="college"
-              name="College Name"
-              placeholder="Enter your college name"
-              required
-            />
+            <select id="college" name="college" required>
+              <option value="">-- Select your department --</option>
+              <option value="jgec">Jalpaiguri Government Engineering College</option>
+              <option value="other">Others</option>
+            </select>
           </div>
 
           <div class="label-item">
@@ -348,12 +346,13 @@
           const formData = {
             name: document.getElementById("name").value,
             roll: parseInt(document.getElementById("roll").value),
+            college: document.getElementById("college").value,
             dept: document.getElementById("dept").value,
             year: document.getElementById("year").value,
             phone: parseInt(document.getElementById("phone").value),
             email: document.getElementById("email").value,
             event: document.getElementById("event").value,
-            isVerified:false,
+            isVerified: false,
           };
 
           formData.amount = event === "both" ? 800 : 500;
@@ -362,17 +361,16 @@
           const uploadData = await uploadToCloudinary(paymentInput);
           formData.payment = uploadData.secure_url;
 
+          console.log(formData);
+
           // Send the data to your API
           try {
-            const response = await fetch(
-              "https://sristi-registration-backend.vercel.app",
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                // mode: 'no-cors',
-                body: JSON.stringify(formData),
-              }
-            );
+            const response = await fetch("https://sristi-registration-backend.vercel.app", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+             // mode: "no-cors",
+              body: JSON.stringify(formData),
+            });
             console.log(response);
             if (response.ok) {
               alert("Registration successful!");

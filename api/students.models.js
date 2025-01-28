@@ -11,6 +11,7 @@ const studentSchema= new mongoose.Schema({
     },
     college:{
         type: String,
+        enum:["jgec","other"],
         required: true,
     },
     dept:{
@@ -38,7 +39,6 @@ const studentSchema= new mongoose.Schema({
     event:{
         type: String,
         enum:['event1','event2','both'],
-        required: true,
     },
     payment:{//image
         type: String,
