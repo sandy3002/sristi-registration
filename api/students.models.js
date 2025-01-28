@@ -16,7 +16,7 @@ const studentSchema= new mongoose.Schema({
     },
     dept:{
         type: String,
-        enum: ["civil", "mechanical", "electrical", "ece","cse","it"],
+        enum: ["other","civil", "mechanical", "electrical", "ece","cse","it"],
         required:true,
     },
     year:{
