@@ -38,7 +38,7 @@ const studentSchema= new mongoose.Schema({
     },
     event:{
         type: String,
-        enum:['event1','event2','both'],
+        enum:['event1','event2','both','selected'],
     },
     payment:{//image
         type: String,
