@@ -124,14 +124,14 @@
                 alert("Registration successful!");
                 const response = await fetch(
                   `https://sristi-registration-backend.vercel.app/sendmail/${formData.email}`,
-                  //"http://localhost:4000",
+                  //`http://localhost:4000/sendmail/${formData.email}`,
                   {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                   }
                 );
                 console.log(response);
-                resetFormFields();
+                //resetFormFields();
               } else {
                 alert("Failed to submit the form.");
               }
