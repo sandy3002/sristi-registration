@@ -36,7 +36,7 @@ const SendMail = async (req, res) => {
   }
 
   // Extract email from body or query parameters
-  const email = req.body.id || req.query.id;
+  const email = req.params.id;
   
   if (!email) {
     return res.status(400).json({ error: 'Email is required in request body or query parameter' });
