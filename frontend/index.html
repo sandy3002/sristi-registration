@@ -78,7 +78,7 @@
           };
 
           formData.event = 
-            document.getElementById("event").value === "" ? "selected" : "selected";
+            document.getElementById("event").value === "" ? "selected" : document.getElementById("event");
 
           formData.amount =
             document.getElementById("event").value === "both" ||
