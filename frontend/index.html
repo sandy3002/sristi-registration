@@ -86,10 +86,8 @@
               isVerified: false,
             };
 
-            formData.event =
-              document.getElementById("event").value === null
-                ? "selected"
-                : document.getElementById("event").value;
+          formData.event = 
+            document.getElementById("event").value === "" ? "selected" : document.getElementById("event");
 
             formData.amount =
               document.getElementById("event").value === "both" ||
