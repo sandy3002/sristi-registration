@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const student = require("./students.models.js");
+const sendMail=require("./confirmationMail.js");
 
 // Controller for registering a student
 const registerStudent = async (req, res) => {
@@ -39,5 +40,6 @@ const registerStudent = async (req, res) => {
 
 // Define the POST route
 router.route('/').post(registerStudent);
+router.route('/sendmail/:id').post(sendMail);
 
 module.exports = router;
