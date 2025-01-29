@@ -1,6 +1,6 @@
 const sendgridMail = require("@sendgrid/mail");
 
-// Set the SendGrid API Key from environment variables
+// Set the SendGrid API Key
 sendgridMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const SendMail = async (req, res) => {
@@ -22,15 +22,14 @@ const SendMail = async (req, res) => {
 
   // Email options
   const msg = {
-    to: email,  // Recipient email
-    from: process.env.SRISTI_EMAIL,  // Sender email (must be verified in SendGrid)
+    to: email,
+    from: process.env.SRISTI_EMAIL,
     subject: "This is a test email",
-    text: "Hello world",  // Plain text email
-    html: `<p>This is a test message</p>`,  // HTML email
+    text: "Hello world",
+    html: `<p>This is a test message</p>`,
   };
 
   try {
-    // Send email through SendGrid
     await sendgridMail.send(msg);
     return res.status(200).json({ message: 'Email sent successfully' });
   } catch (error) {
