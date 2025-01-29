@@ -9,11 +9,11 @@ const SendMail = async (req, res) => {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  // Extract email from request body or query params
+  // Extract email from body or query parameters
   const email = req.body.id || req.query.id;
   
   if (!email) {
-    return res.status(400).json({ error: 'Email is required' });
+    return res.status(400).json({ error: 'Email is required in request body or query parameter' });
   }
 
   console.log("Email:", email);
