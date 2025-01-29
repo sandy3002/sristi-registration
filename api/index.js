@@ -48,10 +48,6 @@ app.use((req, res, next) => {
 // Route setup for student-related endpoints
 app.use('/', studentRouter);
 
-app.get("/", (req, res) => {
-  res.send("This a backend API for SRISTI Registration Process ");
-});
-
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
