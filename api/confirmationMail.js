@@ -4,7 +4,7 @@ const qr = require("qrcode");
 
 const generateQRCode = async (idl) => {
   try {
-    const qrCodeDataURL = await qr.toDataURL(id); // Generate QR as Base64
+    const qrCodeDataURL = await qr.toDataURL(idl); // Generate QR as Base64
     return qrCodeDataURL;
   } catch (err) {
     console.error("QR Code generation failed:", err);
