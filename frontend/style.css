@@ -84,7 +84,7 @@ select {
   display: flex;
   justify-content: center; /* Horizontally center */
   align-items: center; /* Vertically center */
-  height:1200px;
+  height:1300px;
   width: 600px;
   border: 2px solid #ccc;
   border-radius: 6px;
@@ -98,4 +98,32 @@ select {
   box-sizing: border-box; 
   
   
+}
+.show-on-desktop {
+  display: block; /* Ensure it’s visible by default */ 
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.qr-img{
+  height:200px;
+  width: 200px;
+  
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .show-on-desktop {
+    display: none; /* Hide it on mobile */
+  }
+}
+.hide-on-desktop {
+  display: none; /* Hide by default (for desktop) */
+  
+}
+
+@media (max-width: 768px) {
+  .hide-on-desktop {
+    display: block; /* Show on mobile */
+  }
 }

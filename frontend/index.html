@@ -18,6 +18,7 @@
         const collegeInputContainer = document.getElementById(
           "college-input-container"
         );
+        const qrPayment=document.getElementById('qr-payment');
 
         collegeSelect.addEventListener("change", function () {
           if (collegeSelect.value === "other") {
@@ -27,6 +28,7 @@
             note.textContent = "Participation Fee: ₹800";
             payNowContainer.innerHTML =
               '<a href="upi://pay?pa=sristijgec@sbi&pn=SRISTIJALPAIGURI%20GOVT%20ENGG%20COLLEGE&mc=8220&tr=&tn=&am=800&cu=INR&url=&mode=02&purpose=00&orgid=180102&sign=MEQCIBpUcu1IGX07X7+IPlV6AYfA43SSwUaV/VV+19w2cIRNAiA0qD2s6BqIza4HZhd9M2SPsSdCp8ShUlbDql6V7SviQQ==" class="pay-now-btn">PAY NOW</a>';
+            qrPayment.innerHTML='<img src="./assets/pay-800-sristi.svg" class="qr-img"/>';
           } else {
             collegeInputContainer.style.display = "none";
             eventContainer.style.display = "block";
@@ -34,12 +36,14 @@
             note.textContent =
               "Participation Fee: Event 1 or 2 - ₹500, Both (1+2) - ₹800";
             payNowContainer.innerHTML = "";
+            qrPayment.innerHTML="";
 
             eventSelect.addEventListener("change", function () {
               if (eventSelect.value === "both") {
                 note.textContent = "Participation Fee: ₹800";
                 payNowContainer.innerHTML =
                   '<a href="upi://pay?pa=sristijgec@sbi&pn=SRISTIJALPAIGURI%20GOVT%20ENGG%20COLLEGE&mc=8220&tr=&tn=&am=800&cu=INR&url=&mode=02&purpose=00&orgid=180102&sign=MEQCIBpUcu1IGX07X7+IPlV6AYfA43SSwUaV/VV+19w2cIRNAiA0qD2s6BqIza4HZhd9M2SPsSdCp8ShUlbDql6V7SviQQ==" class="pay-now-btn">PAY NOW</a>';
+                  qrPayment.innerHTML='<img src="./assets/pay-800-sristi.svg" class="qr-img"/>';
               } else if (
                 eventSelect.value === "event1" ||
                 eventSelect.value === "event2"
@@ -47,10 +51,12 @@
                 note.textContent = "Participation Fee: ₹500";
                 payNowContainer.innerHTML =
                   '<a href="upi://pay?pa=sristijgec@sbi&pn=SRISTIJALPAIGURI%20GOVT%20ENGG%20COLLEGE&mc=8220&tr=&tn=&am=500&cu=INR&url=&mode=02&purpose=00&orgid=180102&sign=MEQCIBpUcu1IGX07X7+IPlV6AYfA43SSwUaV/VV+19w2cIRNAiA0qD2s6BqIza4HZhd9M2SPsSdCp8ShUlbDql6V7SviQQ==" class="pay-now-btn">PAY NOW</a>';
+                  qrPayment.innerHTML='<img src="./assets/pay-500-sristi.svg" class="qr-img"/>';
               } else {
                 note.textContent =
                   "Participation Fee: Event 1 or 2 - ₹500, Both (1+2) - ₹800";
                 payNowContainer.innerHTML = "";
+                qrPayment.innerHTML="";
               }
             });
           }
@@ -251,7 +257,7 @@
           <div class="label-item">
             <label for="roll">Roll Number</label>
             <input
-              type="text"
+              type="number"
               id="roll"
               name="roll"
               placeholder="Enter your roll number"
@@ -288,6 +294,7 @@
             <label for="phone">Phone Number</label>
             <input
               type="tel"
+              pattern="^\d{10}$"
               id="phone"
               name="phone"
               placeholder="Enter your phone number"
@@ -319,8 +326,11 @@
           <p class="note">
             Participation Fee: Event 1 or 2 - ₹500, Both (1+2) - ₹800
           </p>
+          <div class="show-on-desktop">
+            <div id="qr-payment"></div>
+          </div>
 
-          <div id="pay-now-container"></div>
+          <div id="pay-now-container" class="hide-on-desktop"></div>
 
           <div class="label-item">
             <label for="payment">Upload Payment Screenshot</label>
