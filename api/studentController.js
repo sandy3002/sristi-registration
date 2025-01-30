@@ -44,6 +44,7 @@ const registerStudent = async (req, res) => {
         await studentData.save();
         res.status(200).json({
             message: 'Student registered successfully',
+            id:studentData._id
         });
     } catch (error) {
         console.error('Error during registration:', error); // Log the error for debugging
