@@ -3,11 +3,11 @@ const router = express.Router();
 const student = require("./students.models.js");
 const sendMail = require("./confirmationMail.js");
 
-const generateStudentId = () => {
-  const timestamp = Date.now();
-  const randomPart = Math.random().toString(36).substring(2, 6).toUpperCase();
-  return `${timestamp}-${randomPart}`;
-};
+// const generateStudentId = () => {
+//   const timestamp = Date.now();
+//   const randomPart = Math.random().toString(36).substring(2, 6).toUpperCase();
+//   return `${timestamp}-${randomPart}`;
+// };
 
 // Controller for registering a student
 const registerStudent = async (req, res) => {
@@ -19,8 +19,7 @@ const registerStudent = async (req, res) => {
     const findStudent = await student.findOne({ phone: req.body.phone });
     if (findStudent)
       return res.status(400).json({ message: "student already exists" });
-    let studentId = generateStudentId();
-    console.log("studentId", studentId);
+    
     const studentData = await student.create({
       name: req.body.name,
       roll: req.body.roll,
@@ -34,20 +33,20 @@ const registerStudent = async (req, res) => {
       college: req.body.college,
       collegeName: req.body.collegeName,
       isVerified: req.body.isVerified,
-      studentId: studentId,
     });
 
-    // Save the data and send a success response
-    await studentData.save();
-    res.status(200).json({
-      message: "Student registered successfully",
-    });
-  } catch (error) {
-    console.error("Error during registration:", error); // Log the error for debugging
-    res.status(500).json({
-      message: "Server error",
-    });
-  }
+        // Save the data and send a success response
+        await studentData.save();
+        res.status(200).json({
+            message: 'Student registered successfully',
+            id:studentData._id
+        });
+    } catch (error) {
+        console.error('Error during registration:', error); // Log the error for debugging
+        res.status(500).json({
+            message: 'Server error',
+        });
+    }
 };
 
 // Define the POST route
