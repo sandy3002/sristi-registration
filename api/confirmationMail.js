@@ -10,10 +10,18 @@ const SendMail = async (req, res) => {
     // host: "https://sristi-registration-backend.vercel.app/",
     // port: 587,
     service: "gmail",
+    port: 465,
+    secure: true,
+    logger: true,
+    debug:true,
+    secureConnection:false,
     auth: {
       user: process.env.SRISTI_EMAIL,
       pass: process.env.SRISTI_PASSWORD,
     },
+    tls:{
+      rejectUnAuthorized:true,
+    }
   });
 
   var message = {
