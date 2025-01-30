@@ -3,13 +3,24 @@ const router = express.Router();
 const student = require("./students.models.js");
 const sendMail=require("./confirmationMail.js");
 
+const generateStudentId=()=> {
+    const timestamp = Date.now();
+    const randomPart = Math.random().toString(36).substring(2, 6).toUpperCase();
+    return `${timestamp}-${randomPart}`;
+}
+
 // Controller for registering a student
 const registerStudent = async (req, res) => {
+    
     try {
         //console.log("request is:", req);
         console.log('Incoming payload:', req.body); // Log the request payload
 
         // Create a new student record
+        const findStudent=await student.findOne({phone:req.body.phone});
+        if(findStudent) return res.status(400).json({message:"student already exists"});
+        let studentId=generateStudentId();
+        console.log("studentId",studentId);
         const studentData = await student.create({
             name: req.body.name,
             roll: req.body.roll,
@@ -23,7 +34,11 @@ const registerStudent = async (req, res) => {
             college: req.body.college,
             collegeName: req.body.collegeName,
             isVerified:req.body.isVerified,
+            studentId:studentId,
         });
+
+        
+        
 
         // Save the data and send a success response
         await studentData.save();
