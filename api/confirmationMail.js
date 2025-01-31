@@ -359,6 +359,8 @@ const SendMail = async (req, res) => {
     <div class="email-footer">
       <p>&copy; Jalpaiguri Government Engineering College</p>
       <p><em>For inquiries, contact us at <a href="mailto:sristi@jgec.ac.in">sristi@jgec.ac.in</a></em></p>
+      <p><em>For additional enquiries, contact our coordinator: <br><strong>Sampurno Sarkar (+917439135785)</strong></em></p>
+
     </div>
   </div>
 
