@@ -53,7 +53,7 @@ const studentSchema = new mongoose.Schema(
     },
     isPaid: {
       type: Boolean,
-      default: false,
+      default: true,
       required: true,
     },
     isVerified: {
