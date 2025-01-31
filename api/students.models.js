@@ -37,6 +37,7 @@ const studentSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
+      unique: true
     },
     event: {
       type: String,
@@ -53,7 +54,7 @@ const studentSchema = new mongoose.Schema(
     },
     isPaid: {
       type: Boolean,
-      default: true,
+      default: false,
       required: true,
     },
     isVerified: {

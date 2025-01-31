@@ -146,6 +146,9 @@
                 alert("Registration successful!");
                 console.log(response);
                 resetFormFields();
+                setTimeout(function() {
+        window.location.href = "confirmation.html";
+    },);
               } else if (response.status == 400) {
                 alert("Phone Number Already Exists!");
               } else {
@@ -162,6 +165,7 @@
           });
 
         function resetFormFields() {
+          window.location.href = "confirmation.html";
           document.getElementById("registrationForm").reset();
           document.getElementById("college-input-container").style.display =
             "none";
@@ -170,6 +174,9 @@
             "Participation Fee: Event 1 or 2 - ₹500, Both (1+2) - ₹800";
           document.getElementById("pay-now-container").innerHTML = "";
           document.getElementById("fileName").textContent = "";
+          setTimeout(function() {
+        window.location.href = "confirmation.html";
+    }, 1000);
         }
 
         async function uploadToCloudinary(file) {
@@ -185,8 +192,8 @@
               body: formData,
             }
           );
-
-          if (!response.ok) {
+          if (response.status == 400){
+            alert("Faild to upload image");
             throw new Error("Failed to upload image");
           }
 
