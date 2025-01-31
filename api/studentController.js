@@ -16,7 +16,8 @@ const registerStudent = async (req, res) => {
     console.log("Incoming payload:", req.body); // Log the request payload
 
     // Create a new student record
-    const findStudent = await student.findOne({ phone: req.body.phone });
+    const findStudent = await student.findOne({ email: req.body.phone })||
+    await student.findOne({ phone: req.body.phone });
     if (findStudent)
       return res.status(400).json({ message: "student already exists" });
     

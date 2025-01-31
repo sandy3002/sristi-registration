@@ -37,7 +37,7 @@ const studentSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
     event: {
       type: String,
@@ -66,4 +66,4 @@ const studentSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("studentSchema", studentSchema);
+module.exports = mongoose.model("sristipirates", studentSchema);

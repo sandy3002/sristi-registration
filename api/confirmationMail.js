@@ -161,7 +161,7 @@ const SendMail = async (req, res) => {
       <p>Don't miss the chance to navigate through mind-bending workshops, tech challenges, and opportunities to unlock your true potential! 💻⚡️</p>
 
 <!-- Button linking to the official website -->
-    <a href="https://www.sristi2k25.com" class="cta-btn">Explore Events & Join the Adventure! 🌟</a>
+    <a href="https://sristi-registration-frontend.vercel.app/confirmation.html" class="cta-btn">Explore Events & Join the Adventure! 🌟</a>
 
     </div>
 
